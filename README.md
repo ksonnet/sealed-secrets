@@ -634,6 +634,10 @@ $ export SEALED_SECRETS_CONTROLLER_NAMESPACE=sealed-secrets
 $ kubeseal <mysecret.json >mysealedsecret.json
 ```
 
+### How to use one controller for multiple namespaces in a shared cluster
+
+In case you are using a large multi tenant kubernetes cluster (shared cluster), and you're lacking clusterwide permissions to run a controller, but you want to use one controller for more than one namespace, you can provide all additional namespaces with the command line flags "all-namespaces=false" and "add-namespaces=<namespace1>,<namespace2>,<...>". Make sure you provide appropriate roles and rolebindings in the target namespaces, so the controller can manage their secrets.
+
 ## Community
 
 - [#sealed-secrets on Kubernetes Slack](https://kubernetes.slack.com/messages/sealed-secrets)
